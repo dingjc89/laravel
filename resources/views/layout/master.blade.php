@@ -37,9 +37,7 @@
     </head>
     <body>
         <div class="container">
-            @section('sidebar')
-                This is the master sidebar.
-            @show
+            
             <div class="content">
                 @yield('content')
             </div>

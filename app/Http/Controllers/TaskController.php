@@ -13,6 +13,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 
+use Illuminate\Contracts\Auth\Authenticatable;
+use Cache;
+use Carbon\Carbon;
+use Crypt;
+
 class TaskController extends Controller
 {
     /**
@@ -21,11 +26,36 @@ class TaskController extends Controller
      * @return view
      * @author dingjiacai
      **/
-    public function index()
+    public function index(Authenticatable $user)
     {
+
+        // Cache::add('userid',1,1);
+        // $expiresAt = Carbon::now()->addMinutes(10);
+        // Cache::put('userid',2,$expiresAt);
+        // Cache::put('bar','baz',$expiresAt);
+        // Cache::store('redis')->put('bar', 'baz', 10);
+        // Cache::add('userid',1,60);
+     // Cache::forget('userid');
         $collection = Collection::make([1,2,3]);//Eloquent 对象集合总是以这种方式返回
-        // $collection = collect([1,2,3])
-        var_dump($collection);exit;
+        $collection = collect([1,2,3]);
+        // $multiplied = $collection->transform(function ($item, $key) {
+        //     return $item * 2;
+        // });
+        // $merged = $collection->merge([1,2]);
+        // $reduce = $collection->reduce(function ($value, $item) {
+        //     return $value + $item;
+        // });
+        // $reject = $collection->reject(function ($item) {
+        //     return $item >1;
+        // });
+        $search = $collection->search(1,true);
+        // var_dump($search);
+        $password = Crypt::encrypt('admin');
+        // var_dump($password);
+        $password = Crypt::decrypt($password);
+        // var_dump($password);exit;
+        var_dump(trans('auth.failed'));exit;
+        // var_dump($user);exit;
     	/**
     	 * 判断视图是否存在
     	 * @return boolen 存在: true 不存在: false

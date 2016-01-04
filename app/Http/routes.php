@@ -11,8 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>'auth.basic'],function(){
+	Route::get('/{locale?}',function($locale = 'en'){
+		App::setLocale($locale);
+		echo trans('auth.failed');exit;
+	});
+	Route::get('/tasks','TaskController@index');
+	Route::get('/tasks/{id}','TaskController@show');
+	Route::get('/login','UserController@getLogin');
+	Route::post('/login','UserController@postLogin');
+	Route::get('/logout','UserController@logout');
+	Route::get('/register','UserController@getRegister');
+	Route::post('/register','UserController@postRegister');
 });
-Route::get('/tasks','TaskController@index');
-Route::get('/tasks/{id}','TaskController@show');
