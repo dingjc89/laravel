@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Jobs\SendReminderEmail;
 
 class UserController extends Controller
 {
@@ -72,5 +73,15 @@ class UserController extends Controller
     {
     }
 
-
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author 
+     **/
+    public function getReminderMailer()
+    {
+        $user = Auth::user();
+        $this->dispatch(new SendReminderEmail($user));
+    }
 }
