@@ -12,7 +12,9 @@
 */
 
 Route::group(['middleware'=>'auth.basic'],function(){
-	
+	Route::get('/', function(){
+		return view('welcome');
+	});
 	Route::get('/tasks','TaskController@index');
 	Route::get('/tasks/{id}','TaskController@show');
 	Route::get('/login','UserController@getLogin');
