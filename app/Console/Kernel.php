@@ -29,6 +29,8 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->call(function(){
             DB::table('sessions')->delete();
-        })->everyMinute();
+        })->everyMinute()->when(function() {
+            return true;
+        });
     }
 }
