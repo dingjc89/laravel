@@ -17,6 +17,8 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Cache;
 use Carbon\Carbon;
 use Crypt;
+use DB;
+use Hash;
 
 class TaskController extends Controller
 {
@@ -28,7 +30,12 @@ class TaskController extends Controller
      **/
     public function index(Authenticatable $user)
     {
+        DB::transaction(function() {
+            $userId = DB::table('users')->insert(array('name'=>'kevin','email'=>'kevin@126.com','password'=>Hash::make('kevin')));
+            DB::table('tasks')->insert(array('user_id'=>$userId, 'name'=>'创建用户'));
 
+        });
+        echo "add success";exit;
         // Cache::add('userid',1,1);
         // $expiresAt = Carbon::now()->addMinutes(10);
         // Cache::put('userid',2,$expiresAt);
