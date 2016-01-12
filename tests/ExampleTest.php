@@ -5,7 +5,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ExampleTest extends TestCase
 {
-    use WithoutMiddleware;
     /**
      * A basic test example.
      *
@@ -13,6 +12,7 @@ class ExampleTest extends TestCase
      */
     public function testExample()
     {
+        $this->withoutMiddleware();
         $this->visit('/')
              ->see('Laravel 5')
              ->dontSee('Rails');

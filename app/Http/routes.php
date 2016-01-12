@@ -23,4 +23,5 @@ Route::group(['middleware'=>'auth.basic'],function(){
 	Route::get('/register','UserController@getRegister');
 	Route::post('/register','UserController@postRegister');
 	Route::get('/reminder','UserController@getReminderMailer');
+	Route::get('/home','UserController@home');
 });

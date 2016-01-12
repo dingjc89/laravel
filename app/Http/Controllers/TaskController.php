@@ -82,6 +82,19 @@ class TaskController extends Controller
      **/
     public function show($id)
     {
+        $sum = $this->add();
+        print($sum);exit;
     	return view('welcome')->with('id',$id);
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return intger
+     * @author 
+     **/
+    public function add()
+    {
+        return 1 + 1;
     }
 }
