@@ -26,7 +26,7 @@ no value
     Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
 </div>
 
-aaaaaad
+
 {{--@datetime($date) 在AppServiceProvider中注册datetime命令，使用无效--}}
 @endsection
 
