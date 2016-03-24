@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5 @if(isset($id)){{$author}} @endif</div>
+                <div class="title">Laravel 5 @if(isset($id)){{$author}} @endif @datetime('2015-09-09')</div>
                 <a href="{{url('/tasks/1')}}">点击</a>
             </div>
         </div>
