@@ -62,6 +62,7 @@ class TaskController extends Controller
         $password = Crypt::decrypt($password);
         // var_dump($password);exit;
         var_dump(trans('auth.failed'));exit;
+        
         // var_dump($user);exit;
     	/**
     	 * 判断视图是否存在
@@ -83,7 +84,6 @@ class TaskController extends Controller
     public function show($id)
     {
         $sum = $this->add();
-        print($sum);exit;
     	return view('welcome')->with('id',$id);
     }
 
